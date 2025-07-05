@@ -1,0 +1,27 @@
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    entrypoint: ["/bin/sh", "-c", "ollama serve & sleep 5 && ollama pull llama3.2 && ollama pull nomic-embed-text && wait"]
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main  # Aqui estamos usando a tag 'main'
+    container_name: open-webui
+    restart: unless-stopped
+    ports:
+      - "3000:8080"  # Acesse pelo navegador em localhost:3000
+    depends_on:
+      - ollama
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434  # A URL do serviço Ollama
+    volumes:
+      - openwebui_data:/app/backend/data
+
+volumes:
+  ollama_data:
+  openwebui_data:
