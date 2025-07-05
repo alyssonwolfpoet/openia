@@ -1,6 +1,3 @@
-Claro! Aqui está o conteúdo final do seu `README.md` já prontinho para copiar e colar no seu projeto, com tudo organizado e comandos úteis:
-
-````markdown
 # 🤖 openia — LLM Local com Ollama + Open WebUI
 
 Este projeto fornece um ambiente completo para rodar **modelos de linguagem (LLMs)** localmente utilizando [Ollama](https://ollama.com) e a interface gráfica [Open WebUI](https://github.com/open-webui/open-webui).
